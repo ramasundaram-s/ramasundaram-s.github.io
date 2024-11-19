@@ -127,6 +127,15 @@ footer {
         padding: 1em;
     }
 
+    #home {
+        height: 50vh;
+    }
+
+    #home video {
+        width: 100%;
+        height: auto;
+    }
+
     #home h1 {
         font-size: 1.5em;
     }
@@ -151,6 +160,15 @@ footer {
 }
 
 @media (max-width: 480px) {
+    #home {
+        height: 40vh;
+    }
+
+    #home video {
+        width: 100%;
+        height: auto;
+    }
+
     #home h1 {
         font-size: 1.2em;
     }
