@@ -71,9 +71,7 @@ h1, h2, h3, h4 {
     color: var(--primary);
 }
 
-.github-button {
-    background: var(--primary);
-    color: white !important;
+.github-button, .npm-button {
     padding: 0.8rem 1.5rem;
     border-radius: 4px;
     transition: all 0.3s ease;
@@ -81,7 +79,17 @@ h1, h2, h3, h4 {
     font-weight: 500;
 }
 
-.github-button:hover {
+.github-button {
+    background: var(--primary);
+    color: white !important;
+}
+
+.npm-button {
+    background: #CB3837;
+    color: white !important;
+}
+
+.github-button:hover, .npm-button:hover {
     background: var(--accent);
     color: var(--text) !important;
 }
@@ -112,6 +120,7 @@ h1, h2, h3, h4 {
     margin-bottom: 1rem;
     background: linear-gradient(45deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
