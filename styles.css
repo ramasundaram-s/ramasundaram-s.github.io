@@ -96,9 +96,11 @@ h1, h2, h3, h4 {
 
 /* Hero Section */
 .hero {
-    padding: 8rem 0 4rem;
+    padding: 10rem 0 6rem;
     background: linear-gradient(135deg, var(--background), white);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
@@ -107,11 +109,11 @@ h1, h2, h3, h4 {
 }
 
 .hero-logo {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
-.ignite-logo {
-    width: 180px;
+.company-logo {
+    width: 200px;
     height: auto;
 }
 
@@ -140,8 +142,8 @@ h1, h2, h3, h4 {
 }
 
 /* Features Section */
-.features {
-    padding: 6rem 0;
+.features, .why-now {
+    padding: 8rem 0;
     background: white;
 }
 
@@ -159,10 +161,11 @@ h1, h2, h3, h4 {
 
 .feature-card {
     background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(124, 58, 237, 0.1);
+    transition: all 0.3s ease;
+    text-align: left;
 }
 
 .feature-card:hover {
@@ -170,86 +173,41 @@ h1, h2, h3, h4 {
 }
 
 .feature-card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.feature-card ul {
-    list-style: none;
-}
-
-.feature-card li {
-    margin-bottom: 0.5rem;
+.feature-card p {
     color: var(--text-light);
-    display: flex;
-    align-items: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
-.feature-card li::before {
-    content: "→";
-    color: var(--accent);
-    margin-right: 0.5rem;
-}
-
-/* Examples Section */
-.examples {
-    padding: 6rem 0;
+/* Why Now Section */
+.why-now {
     background: var(--background);
 }
 
-.examples h2 {
+.why-now h2 {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
 }
 
-.example-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+.content-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.example-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-.difficulty {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    background: var(--accent);
-    color: var(--text);
-}
-
-.example-card h3 {
-    margin: 1rem 0;
-    font-size: 1.5rem;
-}
-
-.example-card p {
+.content-block p {
+    font-size: 1.2rem;
+    line-height: 1.8;
     color: var(--text-light);
-    margin-bottom: 1.5rem;
-}
-
-.code-preview {
-    background: #1a1a1a;
-    padding: 1rem;
-    border-radius: 4px;
-    margin-bottom: 0;
-    overflow-x: auto;
-}
-
-.code-preview code {
-    color: #fff;
-    font-family: 'Monaco', 'Consolas', monospace;
-    font-size: 0.9rem;
 }
 
 /* Footer */
