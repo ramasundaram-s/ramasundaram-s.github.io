@@ -305,6 +305,17 @@ footer {
         font-size: 3rem;
     }
 
+    .subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .coming-soon {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+        margin-top: 2rem;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -313,18 +324,42 @@ footer {
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        padding: 0 1rem;
     }
 
-    .feature-grid, .example-grid {
+    .subtitle {
+        font-size: 1rem;
+        padding: 0 1.5rem;
+    }
+
+    .coming-soon {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+    }
+
+    .feature-grid {
         grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .feature-card p {
+        font-size: 1rem;
+    }
+
+    .content-block {
+        padding: 0 1.5rem;
+    }
+
+    .content-block p {
+        font-size: 1rem;
     }
 
     .footer-links {
         grid-template-columns: 1fr;
-    }
-
-    .cta-group {
-        flex-direction: column;
     }
 }
