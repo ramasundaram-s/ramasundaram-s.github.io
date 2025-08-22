@@ -1,96 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actionpackd - AI-Native Development Platform</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Actionpackd — Coming Soon</title>
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --accent: #0ea5ff;
+      --text: #ffffff;
+      --muted: #8892b0;
+      --glow: 0 0 80px rgba(14,165,255,0.15);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .logo {
+      width: auto;
+      height: 120px;
+      margin-bottom: 3rem;
+      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(var(--glow));
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 500;
+      line-height: 1.4;
+      max-width: 700px;
+      margin: 0 0 1.5rem;
+      animation: fadeIn 1s ease-out;
+    }
+    .coming-soon {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      font-weight: 500;
+      animation: pulse 3s ease-in-out infinite;
+      margin-bottom: 2rem;
+    }
+    .glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 100vh;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle at center, rgba(14,165,255,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="4.png" alt="Actionpackd Logo" height="40">
-            </a>
-            <div class="nav-links">
-                <a href="#what-were-building">What We're Building</a>
-                <a href="#why-now">Why Now</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-logo">
-                    <img src="4.png" alt="Actionpackd Logo" class="company-logo">
-                </div>
-                <h1>Build AI-Native Apps, Faster</h1>
-                <p class="subtitle">A new development platform for building, testing, and shipping AI applications with unprecedented speed and efficiency</p>
-                <p class="coming-soon">Coming Soon</p>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <section id="what-were-building" class="features">
-            <div class="container">
-                <h2>What We're Building</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h3>CLI-First Workflow</h3>
-                        <p>Lightning-fast app scaffolding with intelligent defaults and composable AI patterns</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Config-Driven Agents</h3>
-                        <p>Define complex AI behaviors and workflows using simple YAML configurations</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Token-Optimized</h3>
-                        <p>Built-in optimizations for efficient token usage across your entire AI stack</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="why-now" class="why-now">
-            <div class="container">
-                <h2>Why Now?</h2>
-                <div class="content-block">
-                    <p>The AI development landscape is fragmented and complex. Engineers need better tools to build production-ready AI applications without getting lost in infrastructure. We're creating the foundational layer that will define how the next generation of AI-native applications are built.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="4.png" alt="Actionpackd Logo">
-                </div>
-                <div class="footer-links">
-                    <div class="link-group">
-                        <h4>Company</h4>
-                        <a href="#what-were-building">What We're Building</a>
-                        <a href="#why-now">Why Now</a>
-                        <a href="https://actionpackd.com">About</a>
-                    </div>
-                    <div class="link-group">
-                        <h4>Developers</h4>
-                        <a href="https://www.npmjs.com/package/@actionpackd/ignite-ai-sdk">Ignite AI SDK (NPM)</a>
-                        <a href="https://github.com/actionpackdhq/ignite-ai-sdk">GitHub Repository</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Actionpackd. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+  <div class="glow"></div>
+  <img src="1.png" alt="Actionpackd" class="logo">
+  <h1>We are building the Internet of AI age</h1>
+  <div class="coming-soon">Coming Soon</div>
 </body>
 </html>
