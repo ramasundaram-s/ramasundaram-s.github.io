@@ -34,13 +34,23 @@
         object-fit: cover;
       }
     }
+    
   </style>
 </head>
 <body>
   <div class="video-container">
-    <video autoplay loop muted playsinline>
+    <video autoplay loop muted playsinline webkit-playsinline>
       <source src="aisdk soon.mp4" type="video/mp4">
     </video>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.querySelector('video');
+      // Force play on mobile devices
+      video.play().catch(function(error) {
+        console.log("Video autoplay failed:", error);
+      });
+    });
+  </script>
 </body>
 </html>
