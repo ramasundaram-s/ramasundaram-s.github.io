@@ -409,8 +409,12 @@ nav {
 .output-panel pre,
 .output-panel #stream-output,
 .output-panel .output-content,
-.output-panel .output-content pre {
-    color: #4A3880;
+.output-panel .output-content pre,
+#stream-output pre,
+#stream-output,
+.output-content,
+.output-content pre {
+    color: #4A3880 !important;
     margin: 0;
     white-space: pre-wrap;
     word-break: break-word;
@@ -427,15 +431,15 @@ nav {
 }
 
 .output-header h3 {
-    color: var(--color-primary);
+    color: #4A3880;
     margin: 0;
-    font-size: 1rem;
+    font-weight: 600;
 }
 
 .output-content {
     flex: 1;
     font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-    color: #fff;
+    color: #4A3880;
     overflow-y: auto;
     font-size: 0.9rem;
     line-height: 1.5;

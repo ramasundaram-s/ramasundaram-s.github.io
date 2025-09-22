@@ -240,10 +240,10 @@ async function runPlayground() {
                 try {
                     // Try to parse and format as JSON
                     const parsed = JSON.parse(response);
-                    streamOutput.innerHTML = `<pre>${JSON.stringify(parsed, null, 2)}</pre>`;
+                    streamOutput.innerHTML = `<pre style="color: #4A3880">${JSON.stringify(parsed, null, 2)}</pre>`;
                 } catch (e) {
                     // If not valid JSON yet, show as is
-                    streamOutput.innerHTML = `<pre>${response}</pre>`;
+                    streamOutput.innerHTML = `<pre style="color: #4A3880">${response}</pre>`;
                 }
             }
         }
