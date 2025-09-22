@@ -73,8 +73,16 @@ nav {
 }
 
 .logo img {
-    height: 40px;
+    height: 28px;
     width: auto;
+    filter: drop-shadow(0 2px 4px rgba(98, 0, 234, 0.2));
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.logo img:hover {
+    filter: drop-shadow(0 4px 8px rgba(98, 0, 234, 0.3));
+    opacity: 1;
 }
 
 .nav-links {
@@ -125,17 +133,19 @@ nav {
 }
 
 .code-demo {
-    background: #1E1E1E;
-    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(98, 0, 234, 0.05), rgba(41, 121, 255, 0.05));
+    border: 1px solid rgba(98, 0, 234, 0.1);
+    border-radius: 12px;
     padding: 1.5rem;
     margin: 2rem auto;
     max-width: 600px;
     position: relative;
+    box-shadow: 0 4px 20px rgba(98, 0, 234, 0.05);
 }
 
 .code-demo pre {
     margin: 0;
-    color: #fff;
+    color: var(--color-primary);
     font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
 }
 
@@ -187,7 +197,29 @@ nav {
 /* Playground Section */
 .playground {
     padding: 6rem 0;
-    background: linear-gradient(135deg, #f8f9ff 0%, #f0f0ff 100%);
+    background: linear-gradient(135deg, rgba(98, 0, 234, 0.03) 0%, rgba(41, 121, 255, 0.03) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.playground::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(98, 0, 234, 0.1), transparent);
+}
+
+.playground::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(41, 121, 255, 0.1), transparent);
 }
 
 .playground h2 {
@@ -209,11 +241,12 @@ nav {
 
 .playground-container {
     background: white;
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px rgba(98, 0, 234, 0.08);
     max-width: 1400px;
     margin: 0 auto;
+    border: 1px solid rgba(98, 0, 234, 0.05);
 }
 
 .playground-header {
@@ -300,11 +333,12 @@ nav {
 
 .schema-editor {
     height: 300px;
-    padding: 1rem;
-    background: var(--color-code-bg);
-    border-radius: 8px;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(98, 0, 234, 0.03), rgba(41, 121, 255, 0.03));
+    border: 1px solid rgba(98, 0, 234, 0.1);
+    border-radius: 12px;
     font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-    color: #fff;
+    color: var(--color-primary);
     overflow-y: auto;
     white-space: pre;
     font-size: 0.9rem;
@@ -312,33 +346,35 @@ nav {
 }
 
 .schema-editor .json-keyword {
-    color: #ff79c6;
+    color: var(--color-primary);
+    font-weight: 600;
 }
 
 .schema-editor .json-variable {
-    color: #50fa7b;
+    color: var(--color-secondary);
 }
 
 .schema-editor .json-zod {
-    color: #bd93f9;
+    color: #9333EA;
 }
 
 .schema-editor .json-method {
-    color: #50fa7b;
+    color: #2563EB;
 }
 
 .schema-editor .json-enum {
-    color: #f1fa8c;
+    color: #059669;
 }
 
 .schema-editor .json-string {
-    color: #f1fa8c;
+    color: #9333EA;
 }
 
 .output-panel {
-    background: var(--color-code-bg);
-    border-radius: 8px;
-    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(98, 0, 234, 0.02), rgba(41, 121, 255, 0.02));
+    border: 1px solid rgba(98, 0, 234, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
 }
 
 .output-header {
