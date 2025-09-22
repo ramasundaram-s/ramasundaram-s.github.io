@@ -234,16 +234,24 @@ async function runPlayground() {
         const mockProvider = mockProviders[provider];
         let response = '';
         
+        // Utility for safe text wrapping
+        function addZWSP(str, interval = 30) {
+            return str.replace(new RegExp(`(.{${interval}})`, 'g'), '$1\u200B');
+        }
+
         for await (const token of mockProvider(prompt, speed)) {
             response += token;
             if (streamOutput) {
                 try {
                     // Try to parse and format as JSON
                     const parsed = JSON.parse(response);
-                    streamOutput.innerHTML = `<pre style="color: #4A3880">${JSON.stringify(parsed, null, 2)}</pre>`;
+                    const formattedJson = JSON.stringify(parsed, null, 2);
+                    const wrappedJson = addZWSP(formattedJson, 60);
+                    streamOutput.innerHTML = `<div class="code-wrapper"><pre>${wrappedJson}</pre></div>`;
                 } catch (e) {
                     // If not valid JSON yet, show as is
-                    streamOutput.innerHTML = `<pre style="color: #4A3880">${response}</pre>`;
+                    const wrappedText = addZWSP(response, 60);
+                    streamOutput.innerHTML = `<div class="code-wrapper"><pre>${wrappedText}</pre></div>`;
                 }
             }
         }
