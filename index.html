@@ -30,8 +30,8 @@
                 <li><a href="#quickstart">Quickstart</a></li>
                 <li><a href="#docs">Docs</a></li>
                 <li><a href="#examples">Examples</a></li>
-                <li><a href="https://github.com/actionpackd/sdk" class="github-link">GitHub</a></li>
-                <li><a href="https://www.npmjs.com/package/@actionpackd/sdk" class="cta-button" target="_blank" rel="noopener noreferrer">Install</a></li>
+                <li><a href="https://github.com/ActionpackdHQ/AI-SDK" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://www.npmjs.com/package/@actionpackd/sdk-core" class="cta-button" target="_blank" rel="noopener noreferrer">Install</a></li>
             </ul>
         </nav>
     </header>
@@ -42,8 +42,15 @@
                 <h1>Build AI-powered Applications Fast</h1>
                 <p class="tagline">Type-safe AI interactions with schema validation and streaming support</p>
                 <div class="code-demo">
-                    <pre><code>import { serverCompose } from '@actionpackd/sdk';
-const response = await serverCompose(prompt, schema);</code></pre>
+                    <pre><code>import { createProvider, serverCompose } from '@actionpackd/sdk-core';
+import { z } from 'zod';
+
+const provider = createProvider({ id: 'openai' });
+const response = await serverCompose({ 
+  provider,
+  prompt,
+  schema
+});</code></pre>
                     <button class="copy-button" aria-label="Copy code">Copy</button>
                 </div>
                 <div class="cta-buttons">
@@ -137,26 +144,12 @@ const response = await serverCompose(
                             </div>
                             <div class="schema-section">
                                 <h3>Schema</h3>
-                                <div class="schema-editor" contenteditable="true" spellcheck="false">
-{
-  "type": "object",
-  "properties": {
-    "sentiment": {
-      "type": "string",
-      "enum": ["positive", "neutral", "negative"]
-    },
-    "confidence": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1
-    },
-    "keywords": {
-      "type": "array",
-      "items": { "type": "string" }
-    }
-  },
-  "required": ["sentiment", "confidence"]
-}</div>
+                                <div class="schema-editor" contenteditable="true" spellcheck="false">const schema = z.object({
+  sentiment: z.enum(['positive', 'neutral', 'negative']),
+  confidence: z.number().min(0).max(1),
+  keywords: z.array(z.string()),
+  analysis: z.string().optional()
+});</div>
                             </div>
                             <button id="run-button" class="primary-button">▶ Run Analysis</button>
                         </div>
@@ -202,15 +195,15 @@ const schema = z.object({
                 <div class="footer-section">
                     <h4>Links</h4>
                     <ul>
-                        <li><a href="https://github.com/actionpackd/sdk">GitHub</a></li>
-                        <li><a href="https://www.npmjs.com/package/@actionpackd/sdk">npm</a></li>
-                        <li><a href="https://github.com/actionpackd/sdk/tree/main/docs">Documentation</a></li>
+                        <li><a href="https://github.com/ActionpackdHQ/AI-SDK" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://www.npmjs.com/package/@actionpackd/sdk-core" target="_blank" rel="noopener noreferrer">npm</a></li>
+                        <li><a href="https://github.com/ActionpackdHQ/AI-SDK#-features" target="_blank" rel="noopener noreferrer">Documentation</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contribute</h4>
                     <p>Fork → PR → Review</p>
-                    <a href="https://github.com/actionpackd/sdk" class="github-button">View on GitHub</a>
+                    <a href="https://github.com/ActionpackdHQ/AI-SDK" class="github-button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                 </div>
             </div>
             <div class="footer-bottom">

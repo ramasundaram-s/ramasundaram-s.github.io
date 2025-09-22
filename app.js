@@ -27,7 +27,8 @@ const mockProviders = {
         const response = {
             sentiment: "positive",
             confidence: 0.95,
-            keywords: ["launch", "SDK", "AI", "new"]
+            keywords: ["launch", "SDK", "AI", "new"],
+            analysis: "The tweet shows enthusiasm about launching a new SDK, indicated by the rocket emoji. The message is concise and positive."
         };
         
         const tokens = JSON.stringify(response, null, 2).split('');
@@ -42,7 +43,7 @@ const mockProviders = {
             sentiment: "positive",
             confidence: 0.92,
             keywords: ["launch", "SDK", "AI"],
-            analysis: "The tweet expresses excitement about a product launch"
+            analysis: "The tweet expresses excitement about a product launch, specifically an AI SDK. The use of an exclamation mark and rocket emoji emphasizes the positive sentiment."
         };
         
         const tokens = JSON.stringify(response, null, 2).split('');
@@ -57,10 +58,7 @@ const mockProviders = {
             sentiment: "positive",
             confidence: 0.89,
             keywords: ["launch", "SDK", "AI", "🚀"],
-            metadata: {
-                model: "gemini-mock",
-                timestamp: new Date().toISOString()
-            }
+            analysis: "This tweet demonstrates enthusiasm and achievement, announcing the launch of a new AI SDK. The rocket emoji adds a dynamic and forward-looking element to the message."
         };
         
         const tokens = JSON.stringify(response, null, 2).split('');
