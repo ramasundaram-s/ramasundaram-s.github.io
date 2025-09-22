@@ -1,56 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Actionpackd</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: #000;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
-    .video-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    @media (orientation: portrait) {
-      video {
-        object-fit: contain;
-        max-height: 100vh;
-        max-width: 100vw;
-      }
-    }
-    @media (orientation: landscape) {
-      video {
-        object-fit: cover;
-      }
-    }
-    
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actionpackd AI SDK - Build AI-powered Applications Fast</title>
+    <meta name="description" content="Actionpackd AI SDK - The fastest way to build AI-powered applications with schema validation and streaming support">
+    <meta property="og:title" content="Actionpackd AI SDK">
+    <meta property="og:description" content="Build AI-powered applications fast with schema validation and streaming support">
+    <meta property="og:image" content="1.png">
+    <link rel="icon" href="1.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="video-container">
-    <video autoplay loop muted playsinline webkit-playsinline>
-      <source src="aisdk soon.mp4" type="video/mp4">
-    </video>
-  </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const video = document.querySelector('video');
-      // Force play on mobile devices
-      video.play().catch(function(error) {
-        console.log("Video autoplay failed:", error);
-      });
-    });
-  </script>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="1.png" alt="Actionpackd Logo" width="180" height="40">
+            </div>
+            <button class="mobile-menu-button" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#quickstart">Quickstart</a></li>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="https://github.com/actionpackd/sdk" class="github-link">GitHub</a></li>
+                <li><a href="#install" class="cta-button">Install</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Build AI-powered Applications Fast</h1>
+                <p class="tagline">Type-safe AI interactions with schema validation and streaming support</p>
+                <div class="code-demo">
+                    <pre><code>import { serverCompose } from '@actionpackd/sdk';
+const response = await serverCompose(prompt, schema);</code></pre>
+                    <button class="copy-button" aria-label="Copy code">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="#quickstart" class="primary-button">Get Started</a>
+                    <a href="https://github.com/actionpackd/sdk" class="secondary-button">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>serverCompose</h3>
+                        <p>Server-side AI composition with built-in schema validation and streaming support.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>useCompose</h3>
+                        <p>React hooks for seamless AI integration in your frontend applications.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Flow Builder</h3>
+                        <p>Create complex AI workflows with our intuitive flow builder.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Provider Adapters</h3>
+                        <p>Support for OpenAI, Anthropic, Google AI, and more out of the box.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Security First</h3>
+                        <p>Built-in security features and best practices for safe AI interactions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quickstart" class="quickstart">
+            <div class="container">
+                <h2>Quickstart</h2>
+                <div class="install-command">
+                    <pre><code>npm install @actionpackd/sdk</code></pre>
+                    <button class="copy-button" aria-label="Copy install command">Copy</button>
+                </div>
+                <div class="quickstart-example">
+                    <h3>Basic Example</h3>
+                    <pre><code>import { serverCompose } from '@actionpackd/sdk';
+
+const schema = {
+  type: 'object',
+  properties: {
+    summary: { type: 'string' },
+    sentiment: { type: 'string', enum: ['positive', 'neutral', 'negative'] }
+  }
+};
+
+const response = await serverCompose(
+  "Analyze this tweet: 'Just launched our new AI SDK!'",
+  schema
+);</code></pre>
+                    <button class="copy-button" aria-label="Copy example">Copy</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="playground" class="playground">
+            <div class="container">
+                <h2>Interactive Playground</h2>
+                <div class="playground-container">
+                    <div class="controls">
+                        <select id="provider-select" aria-label="Select AI Provider">
+                            <option value="openai">Mock OpenAI</option>
+                            <option value="anthropic">Mock Anthropic</option>
+                            <option value="gemini">Mock Gemini</option>
+                        </select>
+                        <textarea id="prompt-input" placeholder="Enter your prompt here..." aria-label="Enter prompt"></textarea>
+                        <div class="schema-editor">
+                            <h4>Schema (optional)</h4>
+                            <pre><code contenteditable="true" class="schema-code" aria-label="Edit schema">{
+  "type": "object",
+  "properties": {
+    "response": { "type": "string" }
+  }
+}</code></pre>
+                        </div>
+                        <button id="run-button" class="primary-button">Run</button>
+                    </div>
+                    <div class="output">
+                        <div id="stream-output" aria-live="polite"></div>
+                        <div id="validation-output"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="docs" class="docs">
+            <div class="container">
+                <h2>Documentation</h2>
+                <div class="docs-preview">
+                    <h3>Why Schema-first?</h3>
+                    <p>Schema-first development ensures type safety and predictable AI responses. Define your expected output structure and let Actionpackd handle the validation.</p>
+                    <pre><code>// Your schema defines the shape of AI responses
+const schema = z.object({
+  title: z.string(),
+  categories: z.array(z.string())
+});</code></pre>
+                    <a href="https://github.com/actionpackd/sdk/tree/main/docs" class="secondary-button">View Full Documentation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="1.png" alt="Actionpackd Logo" width="140" height="32">
+                    <p>Build better AI applications faster</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://github.com/actionpackd/sdk">GitHub</a></li>
+                        <li><a href="https://www.npmjs.com/package/@actionpackd/sdk">npm</a></li>
+                        <li><a href="https://github.com/actionpackd/sdk/tree/main/docs">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contribute</h4>
+                    <p>Fork → PR → Review</p>
+                    <a href="https://github.com/actionpackd/sdk" class="github-button">View on GitHub</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Actionpackd. MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
 </body>
 </html>
