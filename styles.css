@@ -75,14 +75,6 @@ nav {
 .logo img {
     height: 40px;
     width: auto;
-    filter: drop-shadow(0 2px 4px rgba(98, 0, 234, 0.2));
-    opacity: 0.9;
-    transition: all 0.3s ease;
-}
-
-.logo img:hover {
-    filter: drop-shadow(0 4px 8px rgba(98, 0, 234, 0.3));
-    opacity: 1;
 }
 
 .nav-links {
@@ -180,9 +172,10 @@ nav {
 }
 
 .install-command {
-    background: #1E1E1E;
-    border-radius: 8px;
-    padding: 1rem;
+    background: linear-gradient(135deg, rgba(98, 0, 234, 0.03), rgba(41, 121, 255, 0.03));
+    border: 1px solid rgba(98, 0, 234, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
     margin: 2rem 0;
     position: relative;
 }
@@ -376,6 +369,15 @@ nav {
     border: 1px solid rgba(98, 0, 234, 0.1);
     border-radius: 12px;
     padding: 2rem;
+    overflow: auto;
+    max-height: 500px;
+}
+
+.output-panel pre {
+    color: var(--color-primary);
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .output-header {
@@ -469,14 +471,25 @@ nav {
 
 .copy-button {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
+    top: 1rem;
+    right: 1rem;
+    background: var(--color-gradient);
     border: none;
     color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: transform 0.2s;
+}
+
+.copy-button:hover {
+    transform: translateY(-1px);
+}
+
+.copy-button:active {
+    transform: translateY(0);
 }
 
 /* Footer */
