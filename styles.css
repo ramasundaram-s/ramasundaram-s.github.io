@@ -109,6 +109,19 @@ nav {
 
 .mobile-menu-button {
     display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.mobile-menu-button span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary);
+    margin: 4px 0;
+    transition: 0.3s;
 }
 
 /* Hero Section */
@@ -580,6 +593,10 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
     .mobile-menu-button {
         display: block;
         background: none;
@@ -591,7 +608,7 @@ footer p {
         display: block;
         width: 25px;
         height: 2px;
-        background: var(--color-text);
+        background: var(--color-primary);
         margin: 5px 0;
     }
 
@@ -603,7 +620,7 @@ footer p {
         right: 0;
         background: white;
         padding: 1rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(98, 0, 234, 0.1);
     }
 
     .nav-links.active {
@@ -614,10 +631,95 @@ footer p {
 
     .hero h1 {
         font-size: 2rem;
+        padding: 0 1rem;
     }
 
     .tagline {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .code-demo {
+        margin: 1.5rem 0;
+        padding: 1rem;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .code-demo pre {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .install-command {
+        padding: 1rem;
+        margin: 1rem 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .quickstart-example {
+        padding: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .playground-container {
+        padding: 1rem;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .output-panel {
+        padding: 1rem;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .schema-editor {
+        padding: 1rem;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 200px;
+    }
+
+    #prompt-input {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+        height: 80px;
+    }
+
+    .copy-button {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .playground-split {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 1rem;
+    }
+
+    .playground-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .speed-control {
+        width: 100%;
+        justify-content: space-between;
     }
 }
 
