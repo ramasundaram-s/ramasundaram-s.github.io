@@ -44,12 +44,12 @@
                 <div class="code-demo">
                     <pre><code>import { createProvider, serverCompose } from '@actionpackd/sdk-core';
 const provider = createProvider({ id: 'openai' });
-const response = await serverCompose({ provider, prompt, schema });  // @actionpackd/sdk-core</code></pre>
+const response = await serverCompose({ provider, prompt, schema });</code></pre>
                     <button class="copy-button" aria-label="Copy code">Copy</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="#quickstart" class="primary-button">Get Started</a>
-                    <a href="https://github.com/actionpackd/sdk" class="secondary-button">GitHub</a>
+                    <a href="https://github.com/actionpackd/sdk-core" class="secondary-button">GitHub</a>
                 </div>
             </div>
         </section>
@@ -91,7 +91,7 @@ const response = await serverCompose({ provider, prompt, schema });  // @actionp
                 </div>
                 <div class="quickstart-example">
                     <h3>Basic Example</h3>
-                    <pre><code>import { serverCompose } from '@actionpackd/sdk';
+                    <pre><code>import { serverCompose } from '@actionpackd/sdk-core';
 
 const schema = {
   type: 'object',
@@ -167,7 +167,7 @@ const response = await serverCompose(
 
     <footer>
         <div class="container">
-            <p>Copyright &copy; 2025 Actionpackd</p>
+            <p>&copy; 2025 Actionpackd</p>
         </div>
     </footer>
 
