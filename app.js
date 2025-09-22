@@ -237,7 +237,14 @@ async function runPlayground() {
         for await (const token of mockProvider(prompt, speed)) {
             response += token;
             if (streamOutput) {
-                streamOutput.innerHTML = `<pre>${formatJSON(response)}</pre>`;
+                try {
+                    // Try to parse and format as JSON
+                    const parsed = JSON.parse(response);
+                    streamOutput.innerHTML = `<pre>${JSON.stringify(parsed, null, 2)}</pre>`;
+                } catch (e) {
+                    // If not valid JSON yet, show as is
+                    streamOutput.innerHTML = `<pre>${response}</pre>`;
+                }
             }
         }
         

@@ -380,6 +380,18 @@ nav {
     word-break: break-word;
 }
 
+#stream-output pre {
+    color: var(--color-primary);
+}
+
+#stream-output {
+    color: var(--color-primary);
+}
+
+.output-content {
+    color: var(--color-primary);
+}
+
 .output-header {
     display: flex;
     justify-content: space-between;
