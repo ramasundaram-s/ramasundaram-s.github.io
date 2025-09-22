@@ -117,10 +117,11 @@ const response = await serverCompose(
                 <div class="playground-container">
                     <div class="playground-header">
                         <div class="provider-selector">
+                            <label for="provider-select">Provider</label>
                             <select id="provider-select" aria-label="Select AI Provider">
-                                <option value="openai">Mock OpenAI</option>
-                                <option value="anthropic">Mock Anthropic</option>
-                                <option value="gemini">Mock Gemini</option>
+                                <option value="openai">OpenAI Mock</option>
+                                <option value="anthropic">Anthropic Mock</option>
+                                <option value="gemini">Gemini Mock</option>
                             </select>
                         </div>
                         <div class="speed-control">
@@ -150,7 +151,7 @@ const response = await serverCompose(
                         <div class="output-panel">
                             <div class="output-header">
                                 <h3>Response</h3>
-                                <button class="copy-button" aria-label="Copy response">Copy</button>
+                                <button class="copy-button" aria-label="Copy response">Copy Response</button>
                             </div>
                             <div class="output-content">
                                 <div id="stream-output" aria-live="polite"></div>
