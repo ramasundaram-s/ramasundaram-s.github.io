@@ -43,14 +43,8 @@
                 <p class="tagline">Type-safe AI interactions with schema validation and streaming support</p>
                 <div class="code-demo">
                     <pre><code>import { createProvider, serverCompose } from '@actionpackd/sdk-core';
-import { z } from 'zod';
-
 const provider = createProvider({ id: 'openai' });
-const response = await serverCompose({ 
-  provider,
-  prompt,
-  schema
-});</code></pre>
+const response = await serverCompose({ provider, prompt, schema });</code></pre>
                     <button class="copy-button" aria-label="Copy code">Copy</button>
                 </div>
                 <div class="cta-buttons">
@@ -188,26 +182,8 @@ const schema = z.object({
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <img src="logo.png" alt="Actionpackd Logo" width="140" height="32">
-                    <p>Build better AI applications faster</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Links</h4>
-                    <ul>
-                        <li><a href="https://github.com/ActionpackdHQ/AI-SDK" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                        <li><a href="https://www.npmjs.com/package/@actionpackd/sdk-core" target="_blank" rel="noopener noreferrer">npm</a></li>
-                        <li><a href="https://github.com/ActionpackdHQ/AI-SDK#-features" target="_blank" rel="noopener noreferrer">Documentation</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contribute</h4>
-                    <p>Fork → PR → Review</p>
-                    <a href="https://github.com/ActionpackdHQ/AI-SDK" class="github-button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Actionpackd. MIT License.</p>
+                <div class="footer-bottom">
+                <p>&copy; 2025 Actionpackd</p>
             </div>
         </div>
     </footer>

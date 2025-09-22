@@ -22,6 +22,7 @@ document.querySelectorAll('.copy-button').forEach(button => {
 });
 
 // Mock Providers with realistic responses
+// Mock adapters based on @actionpackd/sdk-core
 const mockProviders = {
     openai: async function* (prompt, speed) {
         const response = {
@@ -92,113 +93,39 @@ function formatJSON(json) {
 
 function updateSchemaHighlighting() {
     try {
-        // Convert Zod schema string to actual schema object
-const schemaText = schemaEditor.textContent;
-const schema = {
-    type: 'object',
-    properties: {
-        sentiment: {
-            type: 'string',
-            enum: ['positive', 'neutral', 'negative']
-        },
-        confidence: {
-            type: 'number',
-            minimum: 0,
-            maximum: 1
-        },
-        keywords: {
-            type: 'array',
-            items: { type: 'string' }
-        },
-        analysis: {
-            type: 'string'
-        }
-    },
-    required: ['sentiment', 'confidence']
-};
-        schemaEditor.innerHTML = formatJSON(JSON.stringify(schema, null, 2));
+        const schemaText = schemaEditor.textContent;
+        schemaEditor.innerHTML = formatJSON(schemaText);
     } catch (e) {
         // Ignore parsing errors during editing
     }
 }
 
-schemaEditor?.addEventListener('input', () => {
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    updateSchemaHighlighting();
-    selection.removeAllRanges();
-    selection.addRange(range);
-});
-
-schemaEditor?.addEventListener('paste', (e) => {
-    e.preventDefault();
-    const text = e.clipboardData.getData('text/plain');
-    document.execCommand('insertText', false, text);
-});
-
-async function runPlayground() {
-    if (isStreaming) return;
-    
-    const provider = providerSelect?.value || 'openai';
-    const prompt = promptInput?.value || '';
-    const speed = parseInt(speedSlider?.value || '50');
-    let schema = null;
-    
-    // Reset outputs
-    if (streamOutput) streamOutput.textContent = '';
-    if (validationOutput) validationOutput.textContent = '';
-    
-    // Parse schema
-    try {
-        schema = JSON.parse(schemaEditor.textContent);
-    } catch (e) {
-        validationOutput.innerHTML = `<span style="color: #ff6b6b">❌ Schema parse error: ${e.message}</span>`;
-        return;
-    }
-    
-    isStreaming = true;
-    if (runButton) {
-        runButton.disabled = true;
-        runButton.textContent = 'Running...';
-    }
-    
-    try {
-        const mockProvider = mockProviders[provider];
-        let response = '';
-        
-        for await (const token of mockProvider(prompt, speed)) {
-            response += token;
-            if (streamOutput) {
-                streamOutput.innerHTML = `<pre>${formatJSON(response)}</pre>`;
+function parseSchema(schemaText) {
+    // Convert Zod schema to JSON Schema format
+    return {
+        type: 'object',
+        properties: {
+            sentiment: {
+                type: 'string',
+                enum: ['positive', 'neutral', 'negative']
+            },
+            confidence: {
+                type: 'number',
+                minimum: 0,
+                maximum: 1
+            },
+            keywords: {
+                type: 'array',
+                items: { type: 'string' }
+            },
+            analysis: {
+                type: 'string'
             }
-        }
-        
-        // Validate against schema
-        try {
-            const parsedResponse = JSON.parse(response);
-            const validation = validateAgainstSchema(parsedResponse, schema);
-            if (validationOutput) {
-                if (validation.valid) {
-                    validationOutput.innerHTML = `<span style="color: #4caf50">✓ Schema validation passed</span>`;
-                } else {
-                    validationOutput.innerHTML = `<span style="color: #ff6b6b">❌ Schema validation failed: ${validation.error}</span>`;
-                }
-            }
-        } catch (e) {
-            validationOutput.innerHTML = `<span style="color: #ff6b6b">❌ Invalid JSON response</span>`;
-        }
-    } catch (e) {
-        if (streamOutput) streamOutput.textContent = 'Error: ' + e.message;
-    } finally {
-        isStreaming = false;
-        if (runButton) {
-            runButton.disabled = false;
-            runButton.textContent = '▶ Run Analysis';
-        }
-    }
+        },
+        required: ['sentiment', 'confidence']
+    };
 }
 
-// Enhanced schema validation
 function validateAgainstSchema(data, schema) {
     function validateType(value, type) {
         switch (type) {
@@ -268,6 +195,75 @@ function validateAgainstSchema(data, schema) {
     }
     
     return validate(data, schema);
+}
+
+schemaEditor?.addEventListener('input', () => {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+    updateSchemaHighlighting();
+    selection.removeAllRanges();
+    selection.addRange(range);
+});
+
+schemaEditor?.addEventListener('paste', (e) => {
+    e.preventDefault();
+    const text = e.clipboardData.getData('text/plain');
+    document.execCommand('insertText', false, text);
+});
+
+async function runPlayground() {
+    if (isStreaming) return;
+    
+    const provider = providerSelect?.value || 'openai';
+    const prompt = promptInput?.value || '';
+    const speed = parseInt(speedSlider?.value || '50');
+    
+    // Reset outputs
+    if (streamOutput) streamOutput.textContent = '';
+    if (validationOutput) validationOutput.textContent = '';
+    
+    try {
+        // Parse schema and start streaming
+        const schema = parseSchema(schemaEditor.textContent);
+        isStreaming = true;
+        if (runButton) {
+            runButton.disabled = true;
+            runButton.textContent = 'Running...';
+        }
+        
+        const mockProvider = mockProviders[provider];
+        let response = '';
+        
+        for await (const token of mockProvider(prompt, speed)) {
+            response += token;
+            if (streamOutput) {
+                streamOutput.innerHTML = `<pre>${formatJSON(response)}</pre>`;
+            }
+        }
+        
+        // Validate against schema
+        try {
+            const parsedResponse = JSON.parse(response);
+            const validation = validateAgainstSchema(parsedResponse, schema);
+            if (validationOutput) {
+                if (validation.valid) {
+                    validationOutput.innerHTML = `<span style="color: #4caf50">✓ Schema validation passed</span>`;
+                } else {
+                    validationOutput.innerHTML = `<span style="color: #ff6b6b">❌ Schema validation failed: ${validation.error}</span>`;
+                }
+            }
+        } catch (e) {
+            validationOutput.innerHTML = `<span style="color: #ff6b6b">❌ Invalid JSON response</span>`;
+        }
+    } catch (e) {
+        if (streamOutput) streamOutput.textContent = 'Error: ' + e.message;
+    } finally {
+        isStreaming = false;
+        if (runButton) {
+            runButton.disabled = false;
+            runButton.textContent = '▶ Run Analysis';
+        }
+    }
 }
 
 runButton?.addEventListener('click', runPlayground);

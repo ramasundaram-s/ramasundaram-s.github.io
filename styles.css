@@ -73,7 +73,7 @@ nav {
 }
 
 .logo img {
-    height: 28px;
+    height: 40px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(98, 0, 234, 0.2));
     opacity: 0.9;
@@ -188,10 +188,11 @@ nav {
 }
 
 .quickstart-example {
-    background: white;
-    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(98, 0, 234, 0.02), rgba(41, 121, 255, 0.02));
+    border: 1px solid rgba(98, 0, 234, 0.1);
+    border-radius: 12px;
     padding: 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(98, 0, 234, 0.05);
 }
 
 /* Playground Section */
@@ -486,10 +487,8 @@ footer {
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    text-align: center;
+    padding: 2rem 0;
 }
 
 .footer-section h4 {
