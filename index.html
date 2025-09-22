@@ -7,8 +7,8 @@
     <meta name="description" content="Actionpackd AI SDK - The fastest way to build AI-powered applications with schema validation and streaming support">
     <meta property="og:title" content="Actionpackd AI SDK">
     <meta property="og:description" content="Build AI-powered applications fast with schema validation and streaming support">
-    <meta property="og:image" content="1.png">
-    <link rel="icon" href="1.png" type="image/png">
+    <meta property="og:image" content="logo.svg">
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="1.png" alt="Actionpackd Logo" width="180" height="40">
+                <img src="logo.svg" alt="Actionpackd Logo" width="180" height="40">
             </div>
             <button class="mobile-menu-button" aria-label="Toggle menu">
                 <span></span>
@@ -31,7 +31,7 @@
                 <li><a href="#docs">Docs</a></li>
                 <li><a href="#examples">Examples</a></li>
                 <li><a href="https://github.com/actionpackd/sdk" class="github-link">GitHub</a></li>
-                <li><a href="#install" class="cta-button">Install</a></li>
+                <li><a href="https://www.npmjs.com/package/@actionpackd/sdk" class="cta-button" target="_blank" rel="noopener noreferrer">Install</a></li>
             </ul>
         </nav>
     </header>
@@ -111,29 +111,65 @@ const response = await serverCompose(
 
         <section id="playground" class="playground">
             <div class="container">
-                <h2>Interactive Playground</h2>
+                <h2>Try it out</h2>
+                <p class="playground-intro">Experience the power of schema-validated AI responses in real-time</p>
                 <div class="playground-container">
-                    <div class="controls">
-                        <select id="provider-select" aria-label="Select AI Provider">
-                            <option value="openai">Mock OpenAI</option>
-                            <option value="anthropic">Mock Anthropic</option>
-                            <option value="gemini">Mock Gemini</option>
-                        </select>
-                        <textarea id="prompt-input" placeholder="Enter your prompt here..." aria-label="Enter prompt"></textarea>
-                        <div class="schema-editor">
-                            <h4>Schema (optional)</h4>
-                            <pre><code contenteditable="true" class="schema-code" aria-label="Edit schema">{
+                    <div class="playground-header">
+                        <div class="provider-selector">
+                            <select id="provider-select" aria-label="Select AI Provider">
+                                <option value="openai">Mock OpenAI</option>
+                                <option value="anthropic">Mock Anthropic</option>
+                                <option value="gemini">Mock Gemini</option>
+                            </select>
+                        </div>
+                        <div class="speed-control">
+                            <label for="speed-slider">Stream Speed</label>
+                            <input type="range" id="speed-slider" min="1" max="100" value="50">
+                        </div>
+                    </div>
+                    <div class="playground-split">
+                        <div class="input-panel">
+                            <div class="prompt-section">
+                                <h3>Prompt</h3>
+                                <textarea id="prompt-input" 
+                                    placeholder="Enter your prompt here..."
+                                    aria-label="Enter prompt">Analyze the sentiment of this tweet: "Just launched our new AI SDK! 🚀"</textarea>
+                            </div>
+                            <div class="schema-section">
+                                <h3>Schema</h3>
+                                <div class="schema-editor" contenteditable="true" spellcheck="false">
+{
   "type": "object",
   "properties": {
-    "response": { "type": "string" }
-  }
-}</code></pre>
+    "sentiment": {
+      "type": "string",
+      "enum": ["positive", "neutral", "negative"]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "keywords": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["sentiment", "confidence"]
+}</div>
+                            </div>
+                            <button id="run-button" class="primary-button">▶ Run Analysis</button>
                         </div>
-                        <button id="run-button" class="primary-button">Run</button>
-                    </div>
-                    <div class="output">
-                        <div id="stream-output" aria-live="polite"></div>
-                        <div id="validation-output"></div>
+                        <div class="output-panel">
+                            <div class="output-header">
+                                <h3>Response</h3>
+                                <button class="copy-button" aria-label="Copy response">Copy</button>
+                            </div>
+                            <div class="output-content">
+                                <div id="stream-output" aria-live="polite"></div>
+                                <div id="validation-output"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
