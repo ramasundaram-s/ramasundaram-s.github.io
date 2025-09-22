@@ -1,6 +1,6 @@
 # Actionpackd AI SDK Website
 
-A modern, responsive marketing website for the Actionpackd AI SDK.
+A modern, responsive marketing website for the Actionpackd AI SDK, automatically deployed to GitHub Pages.
 
 ## Features
 
@@ -12,18 +12,9 @@ A modern, responsive marketing website for the Actionpackd AI SDK.
 - Dark mode code blocks
 - Copy-to-clipboard functionality
 
-## Running Locally
+## View the Site
 
-1. Clone the repository
-2. Run a local server:
-   ```bash
-   # Using npm
-   npm install
-   npm start
-
-   # Or using npx directly
-   npx serve
-   ```
+Visit [https://ramasundaram-s.github.io](https://ramasundaram-s.github.io) to see the live site.
 
 ## Development
 
@@ -51,19 +42,16 @@ The site uses a color palette extracted from the Actionpackd logo:
 
 ## Deployment
 
-The site is configured for deployment on Vercel:
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch. No additional setup required!
 
-1. Install Vercel CLI:
-   ```bash
-   npm i -g vercel
-   ```
+## Local Development
 
-2. Deploy:
-   ```bash
-   vercel
-   ```
+To test locally, you can use any static file server. For example:
+- Python: `python -m http.server 8000`
+- Node.js: `npx serve`
+- PHP: `php -S localhost:8000`
 
-Or connect your GitHub repository to Vercel for automatic deployments.
+Or simply open `index.html` in your browser.
 
 ## License
 
