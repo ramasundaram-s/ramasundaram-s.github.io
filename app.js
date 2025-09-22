@@ -80,14 +80,42 @@ const schemaEditor = document.querySelector('.schema-editor');
 
 let isStreaming = false;
 
-// Initialize syntax highlighting for schema
+// Initialize syntax highlighting
 function formatJSON(json) {
-    return json.replace(/"(\w+)":/g, '"<span class="json-key">$1</span>":');
+    return json
+        .replace(/const\s+schema\s+=\s+/g, '<span class="json-keyword">const</span> <span class="json-variable">schema</span> = ')
+        .replace(/z\./g, '<span class="json-zod">z.</span>')
+        .replace(/\b(object|string|number|array|enum|optional)\b(?=\()/g, '<span class="json-method">$1</span>')
+        .replace(/\[([^\]]*)\]/g, '[<span class="json-enum">$1</span>]')
+        .replace(/('[^']*')/g, '<span class="json-string">$1</span>');
 }
 
 function updateSchemaHighlighting() {
     try {
-        const schema = JSON.parse(schemaEditor.textContent);
+        // Convert Zod schema string to actual schema object
+const schemaText = schemaEditor.textContent;
+const schema = {
+    type: 'object',
+    properties: {
+        sentiment: {
+            type: 'string',
+            enum: ['positive', 'neutral', 'negative']
+        },
+        confidence: {
+            type: 'number',
+            minimum: 0,
+            maximum: 1
+        },
+        keywords: {
+            type: 'array',
+            items: { type: 'string' }
+        },
+        analysis: {
+            type: 'string'
+        }
+    },
+    required: ['sentiment', 'confidence']
+};
         schemaEditor.innerHTML = formatJSON(JSON.stringify(schema, null, 2));
     } catch (e) {
         // Ignore parsing errors during editing

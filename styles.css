@@ -311,6 +311,30 @@ nav {
     line-height: 1.5;
 }
 
+.schema-editor .json-keyword {
+    color: #ff79c6;
+}
+
+.schema-editor .json-variable {
+    color: #50fa7b;
+}
+
+.schema-editor .json-zod {
+    color: #bd93f9;
+}
+
+.schema-editor .json-method {
+    color: #50fa7b;
+}
+
+.schema-editor .json-enum {
+    color: #f1fa8c;
+}
+
+.schema-editor .json-string {
+    color: #f1fa8c;
+}
+
 .output-panel {
     background: var(--color-code-bg);
     border-radius: 8px;
