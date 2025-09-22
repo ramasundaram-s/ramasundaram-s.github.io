@@ -73,8 +73,9 @@ nav {
 }
 
 .logo img {
-    height: 40px;
+    height: 48px;
     width: auto;
+    filter: drop-shadow(0 4px 12px rgba(98, 0, 234, 0.2));
 }
 
 .nav-links {
@@ -390,8 +391,9 @@ nav {
 
 .output-panel pre,
 .output-panel #stream-output,
-.output-panel .output-content {
-    color: #4A3880;
+.output-panel .output-content,
+.output-panel .output-content pre {
+    color: var(--color-primary);
     margin: 0;
     white-space: pre-wrap;
     word-break: break-word;
@@ -407,8 +409,9 @@ nav {
 }
 
 .output-header h3 {
-    color: white;
+    color: var(--color-primary);
     margin: 0;
+    font-size: 1rem;
 }
 
 .output-content {

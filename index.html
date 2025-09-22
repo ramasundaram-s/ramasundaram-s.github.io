@@ -8,7 +8,7 @@
     <meta property="og:title" content="Actionpackd AI SDK">
     <meta property="og:description" content="Build AI-powered applications fast with schema validation and streaming support">
     <meta property="og:image" content="logo.png">
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -44,7 +44,7 @@
                 <div class="code-demo">
                     <pre><code>import { createProvider, serverCompose } from '@actionpackd/sdk-core';
 const provider = createProvider({ id: 'openai' });
-const response = await serverCompose({ provider, prompt, schema });</code></pre>
+const response = await serverCompose({ provider, prompt, schema });  // @actionpackd/sdk-core</code></pre>
                     <button class="copy-button" aria-label="Copy code">Copy</button>
                 </div>
                 <div class="cta-buttons">
@@ -86,7 +86,7 @@ const response = await serverCompose({ provider, prompt, schema });</code></pre>
             <div class="container">
                 <h2>Quickstart</h2>
                 <div class="install-command">
-                    <pre><code>npm install @actionpackd/sdk</code></pre>
+                    <pre><code>npm install @actionpackd/sdk-core</code></pre>
                     <button class="copy-button" aria-label="Copy install command">Copy</button>
                 </div>
                 <div class="quickstart-example">
@@ -169,7 +169,7 @@ const response = await serverCompose(
         <div class="container">
             <div class="footer-content">
                 <div class="footer-bottom">
-                <p>&copy; 2025 Actionpackd</p>
+                <p>Copyright &copy; 2025 Actionpackd</p>
             </div>
         </div>
     </footer>
