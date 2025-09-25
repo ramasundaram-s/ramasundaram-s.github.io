@@ -77,12 +77,6 @@ nav {
 .logo img {
     height: 48px;
     width: auto;
-    filter: drop-shadow(0 8px 16px rgba(98, 0, 234, 0.25));
-    transition: filter 0.3s ease;
-}
-
-.logo img:hover {
-    filter: drop-shadow(0 12px 24px rgba(98, 0, 234, 0.3));
 }
 
 .nav-links {
